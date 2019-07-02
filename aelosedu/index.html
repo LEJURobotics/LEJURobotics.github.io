@@ -62,9 +62,9 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_1">有线</a></li>
+            <li><a class="toctree-l3" href="#_1">无线连接协议</a></li>
         
-            <li><a class="toctree-l3" href="#_2">无线</a></li>
+            <li><a class="toctree-l3" href="#_5">有线连接协议</a></li>
         
         </ul>
     
@@ -110,8 +110,125 @@
             <div class="section">
               
                 <h1 id="aelos-edu-sdk">Aelos edu sdk</h1>
-<h2 id="_1">有线</h2>
-<h2 id="_2">无线</h2>
+<div style="text-align:center"><img src ="./img/spec-white.png" width="80%" /></div>
+
+<h2 id="_1">无线连接协议</h2>
+<h3 id="_2">连接方式</h3>
+<ul>
+<li>无线 2.4G USB Dongle</li>
+</ul>
+<h3 id="_3">指令格式</h3>
+<h4 id="dongle">设置 Dongle 频率</h4>
+<table>
+<thead>
+<tr>
+<th>指令头</th>
+<th>频率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x29 0x00 0x00 0x00 0x00 0x01 0x00 0x00</td>
+<td><strong>CH</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>CH</strong>: Dongle 通信频率，范围：<strong>0x00~0x7F</strong></li>
+</ul>
+<h4 id="_4">发送按键</h4>
+<table>
+<thead>
+<tr>
+<th>按键值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KEY</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>KEY</strong>：遥控器按键值，范围：<strong>0x01~0x0B</strong></li>
+</ul>
+<h2 id="_5">有线连接协议</h2>
+<h3 id="_6">连接方式</h3>
+<ul>
+<li>有线 Micro USB</li>
+</ul>
+<h3 id="_7">指令格式</h3>
+<h4 id="_8">进入在线模式</h4>
+<p>机器人必须进入在线模式，才能调整舵机角度</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x83</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_9">设置单个舵机角度</h4>
+<table>
+<thead>
+<tr>
+<th>操作码</th>
+<th>包序列号</th>
+<th>保留位1</th>
+<th>保留位2</th>
+<th>包长H</th>
+<th>包长L</th>
+<th>校验和1</th>
+<th>校验和2</th>
+<th>舵机1</th>
+<th>······</th>
+<th>舵机16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>91</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>10</td>
+<td>00</td>
+<td>00</td>
+<td>XX</td>
+<td>XX</td>
+<td>······</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>舵机角度范围：0x0A ~ 0xBE</p>
+</li>
+<li>
+<p>舵机编号图</p>
+</li>
+</ul>
+<div style="text-align:center"><img src ="https://raw.githubusercontent.com/wangshub/image-hosting/master/img/20190702155110.png" width="80%" /></div>
+
+<h4 id="_10">退出在线模式</h4>
+<p>退出在线模式，机器人不响应任何在线指令</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0xCC</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
